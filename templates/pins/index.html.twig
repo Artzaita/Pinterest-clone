@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<h1>All Pins</h1>
+
+<a href="{{ path('app_pins_create')}}">Créer un Pin!</a>
+
+{% for pin in pins%}
+	<article>
+		<h2><a href="{{path('app_pins_show', {'id': pin.id})}}">{{pin.getTitle()}}</a></h2>
+		<p>{{pin.getDescription()}}</p>
+	</article>
+{% else %}
+	<p>Désolé, il n'y a pas encore de Pins!</p>	
+{% endfor %}
+{% endblock %}
+
+

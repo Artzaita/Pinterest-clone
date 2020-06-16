@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+	<a href="{{path('app_home')}}">Retour à l'accueil</a>
+
+	<h1>{{pin.title}}</h1>
+
+	<p>{{pin.description}}</p>
+
+	<a href="{{path('app_pins_edit', {'id': pin.id})}}">Modifier le Pin</a>
+
+	<a href="{{path('app_pins_delete', {'id': pin.id})}}">Supprimer le Pin</a>
+
+{% endblock %}
