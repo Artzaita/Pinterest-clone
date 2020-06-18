@@ -153,4 +153,12 @@ class PinsController extends AbstractController
 
     }
 
+    /**
+     * <<<<<<<<àRoute("/pins/contact", name="app_pins_contact")
+     */
+    public function contact()
+    {
+    	return $this->render('pins/contact.html.twig');
+    }
+
 }
