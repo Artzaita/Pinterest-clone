@@ -154,7 +154,7 @@ class PinsController extends AbstractController
     }
 
     /**
-     * <<<<<<<<àRoute("/pins/contact", name="app_pins_contact")
+     * @Route("/pins/contact", name="app_pins_contact")
      */
     public function contact()
     {
