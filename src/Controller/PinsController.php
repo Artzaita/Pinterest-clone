@@ -24,7 +24,7 @@ class PinsController extends AbstractController
     {
 		$repo = $em->getRepository(Pin::class);
 
-		$pins = $repo->findAll();
+		$pins = $repo->findBy([], ['createdAt' => 'DESC']);
 
         return $this->render('pins/index.html.twig', ['pins' => $pins]);
     }
