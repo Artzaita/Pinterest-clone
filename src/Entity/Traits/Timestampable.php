@@ -50,10 +50,10 @@ Trait Timestampable
     public function updateTimestamps()
     {
         if ($this->getCreatedAt() === null) {
-            $this->setCreatedAt(new \DateTimeImmutable);
+            $this->setCreatedAt(new \DateTimeImmutable('',  new \DateTimeZone('Europe/Paris')));
         }
 
-        $this->setUpdatedAt(new \DateTimeImmutable);
+        $this->setUpdatedAt(new \DateTimeImmutable('',  new \DateTimeZone('Europe/Paris')));
     }
 
 }
