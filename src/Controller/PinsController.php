@@ -121,16 +121,12 @@ class PinsController extends AbstractController
     }
 
     /**
-     * @Route("/pins/edit/{id<[0-9]+>}", name="app_pins_edit")
+     * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit")
      */
-    public function edit(Request $request, EntityManagerInterface $em, $id): Response
+    public function edit(Request $request, EntityManagerInterface $em, Pin $pin): Response
     {
-    	$repo = $em->getRepository(Pin::class);
-    	$pin = $repo->find($id);
-
-    	/*dd($pin);*/
-
-    	$form = $this->createFormBuilder($pin)
+    
+     	$form = $this->createFormBuilder($pin)
 			->add('title', TextType::class, ['label' => 'Titre','attr' => ['autofocus' => 'autofocus']])
 			->add('description', TextareaType::class, ['attr' => ['rows' => 10, 'cols' => 60]])
 			->getForm()
@@ -140,7 +136,6 @@ class PinsController extends AbstractController
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
-    		$em->persist($pin);
     		$em->flush();
 
     		return $this->redirectToRoute('app_pins_show', ['id'=>$pin->getId()]);
@@ -148,6 +143,7 @@ class PinsController extends AbstractController
 		}
 
 		return $this->render('pins/edit.html.twig', [
+            'pin' => $pin,
     		'formulaireEdition' => $form->createView()
     	]);
 
