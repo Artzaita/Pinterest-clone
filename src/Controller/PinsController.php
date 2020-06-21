@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Pin;
+use App\Form\PinType;
 use App\Repository\PinRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,35 +35,10 @@ class PinsController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $em)
     {
-    	/*if($request->isMethod('POST'))
-    	{
-    		$data = $request->request->all();
-
-    		if ($this->isCsrfTokenValid('pins_create', $data['_token']))
-    		{
-
-    		$pin = new Pin;
-    		$pin->setTitle($data['title']);
-    		$pin->setDescription($data['description']);
-
-    		$em->persist($pin);
-    		$em->flush();
-
-
-    		}
-
-    		return $this->redirectToRoute('app_home');
-
-    	}*/
 
     	$pin = new Pin;
 
-		$form = $this->createFormBuilder($pin)
-			->add('title', TextType::class, ['label' => 'Titre','attr' => ['autofocus' => 'autofocus']])
-			->add('description', TextareaType::class, ['attr' => ['rows' => 10, 'cols' => 60]])
-/*			->add('submit', SubmitType::class, ['label' => 'Create pin'])
-*/			->getForm()
-		;
+		$form = $this->createForm(PinType::class, $pin);
 
 		$form->handleRequest($request);
 
@@ -126,11 +102,7 @@ class PinsController extends AbstractController
     public function edit(Request $request, EntityManagerInterface $em, Pin $pin): Response
     {
     
-     	$form = $this->createFormBuilder($pin)
-			->add('title', TextType::class, ['label' => 'Titre','attr' => ['autofocus' => 'autofocus']])
-			->add('description', TextareaType::class, ['attr' => ['rows' => 10, 'cols' => 60]])
-			->getForm()
-		;
+     	$form = $this->createForm(PinType::class, $pin);
 
 		$form->handleRequest($request);
 
