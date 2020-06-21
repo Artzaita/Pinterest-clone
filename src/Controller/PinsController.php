@@ -97,12 +97,14 @@ class PinsController extends AbstractController
     }
 
     /**
-     * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit")
+     * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit", methods={"GET","PUT"})
      */
     public function edit(Request $request, EntityManagerInterface $em, Pin $pin): Response
     {
     
-     	$form = $this->createForm(PinType::class, $pin);
+     	$form = $this->createForm(PinType::class, $pin, [
+            'method' => 'PUT'
+        ]);
 
 		$form->handleRequest($request);
 
