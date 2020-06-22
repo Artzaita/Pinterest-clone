@@ -10,6 +10,10 @@
 
 	<a href="{{path('app_pins_edit', {'id': pin.id})}}">Modifier le Pin</a>
 
-	<a href="{{path('app_pins_delete', {'id': pin.id})}}">Supprimer le Pin</a>
+	<a href="#" onclick="event.preventDefault(); confirm('confirmez-vous la suppression du Pin?') && document.getElementById('js-pin-delete-form').submit();">Supprimer le Pin</a>
+
+ 	<form id="js-pin-delete-form" action="{{path('app_pins_delete', {'id': pin.id})}}" method="POST" style="display: none;">
+ 		<input type="hidden" name="_method" value="DELETE">
+ 	</form>
 
 {% endblock %}

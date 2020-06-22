@@ -79,20 +79,15 @@ class PinsController extends AbstractController
     }
 
     /**
-     * @Route("/pins/delete/{id<[0-9]+>}", name="app_pins_delete")
+     * @Route("/pins/{id<[0-9]+>}/delete", name="app_pins_delete", methods={"GET","DELETE"})
      */
-    public function delete(Request $request, EntityManagerInterface $em, $id): Response
+    public function delete(Request $request, EntityManagerInterface $em, Pin $pin): Response
     {
-    	if ($request -> isMethod('GET')) {
-    		$repo = $em->getRepository(Pin::class);
-    		$pin = $repo->find($id);
 
     		$em->remove($pin);
     		$em->flush();
 
     		return $this->redirectToRoute('app_home');
-
-    	}
 
     }
 
