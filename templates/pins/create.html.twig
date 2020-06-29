@@ -14,11 +14,6 @@
 
 	</form> #}
 
-	{{ form_start(formulaireCréation, {'attr': {'class':'form-group'}}) }}
-
-		{{ form_widget(formulaireCréation)}}
-
-		<input type="submit" name="submit" value="Create Pin!">
-	{{ form_end(formulaireCréation)}}
+	{{ include('pins/_form.html.twig')}}
 
 {% endblock %}

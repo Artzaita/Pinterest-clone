@@ -1,0 +1,6 @@
+{{ form_start(form, {'attr': {'class':'form-group'}}) }}
+
+		{{ form_widget(form)}}
+
+		<input type="submit" name="submit" value="{{submitButtonText ?? 'Créer un Pin'}}">
+{{ form_end(form)}}
