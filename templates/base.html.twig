@@ -3,12 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+        {% endblock %}
     </head>
     <body>
-    	<header><a href="{{url('app_home')}}">Accueil</a></header>
+        {{include('flash_message.html.twig')}}
+    	{{include('header.html.twig')}}
         {% block main %}hello{% endblock %}
         {% block javascripts %}{% endblock %}
-        <footer>&copy; Copyright {{ 'now'|date('Y')}} by <a href="https://www.larrun-prod.com">Larrun-Prod</a> &middot; </footer>
+        {{include('footer.html.twig')}}
     </body>
 </html>
