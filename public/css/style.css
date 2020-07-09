@@ -1,7 +1,19 @@
+@keyframes fadeOut {
+  0%   { opacity:1; }
+  100% { opacity:0; }
+}
+
+@-webkit-keyframes fadeOut {
+  0%   { opacity:1; }
+  100% { opacity:0; }
+}
+
 .alert {
 	padding: 10px;
 	color: white;
 	text-align: center;
+	animation: fadeOut 5s forwards;
+	-webkit-animation: fadeOut 5s forwards;
 }
 
 .alert-success {
