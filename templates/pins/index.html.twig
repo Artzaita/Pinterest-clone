@@ -14,7 +14,7 @@
 	{% for pin in row%}
 		<div class="col-md-4">
 			<article class="pin bg-white rounded shadow">
-				<div class="mw-100 overflow-hidden">
+				<div class="mw-100 overflow-hidden rounded-top">
 				<a href="{{path('app_pins_show', {'id': pin.id})}}">
 	  				<img src="{{ vich_uploader_asset(pin) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100 rounded-top" />
 				</a>
@@ -22,8 +22,6 @@
 	 			<h2 class="h5 text-muted pl-3 pt-3"><a href="{{path('app_pins_show', {'id': pin.id})}}" class="text-secondary text-decoration-none">{{pin.getTitle()}}</a></h2>
 				<p class="pl-3 pb-3 text-muted">Soumis par [auteur nom complet]</p>
 			</article>
-
-
 		</div>
 	{% endfor %}
 	</div>

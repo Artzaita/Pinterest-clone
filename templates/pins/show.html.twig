@@ -4,17 +4,30 @@
 
 	<a href="{{path('app_home')}}">Retour à l'accueil</a>
 
-	<h1>{{pin.title}}</h1>
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+			<article class="pin bg-white rounded shadow">
+				<div class="mw-100 overflow-hidden rounded-top">
+				<a href="{{path('app_pins_show', {'id': pin.id})}}">
+	  				<img src="{{ vich_uploader_asset(pin) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100 rounded-top" />
+				</a>
+				</div>
+	 			<h2 class="h5 text-muted pl-3 pt-3"><a href="{{path('app_pins_show', {'id': pin.id})}}" class="text-secondary text-decoration-none">{{pin.getTitle()}}</a></h2>
+				<p class="pl-3 pb-3 text-muted">Soumis {{pin.createdAt|ago}} par [auteur nom complet]</p>
+				<p class="pl-3 pb-3">{{pin.getDescription()}}</p>
+				<div class="pl-3 pb-3">
+					<a class="btn btn-light" href="{{path('app_pins_edit', {'id': pin.id})}}">Modifier le Pin</a>
 
-	<p>{{pin.description}}</p>
+					<a class="btn btn-light" href="#" onclick="event.preventDefault(); confirm('confirmez-vous la suppression du Pin?') && document.getElementById('js-pin-delete-form').submit();">Supprimer le Pin</a>
 
-	<a href="{{path('app_pins_edit', {'id': pin.id})}}">Modifier le Pin</a>
+				 	<form id="js-pin-delete-form" action="{{path('app_pins_delete', {'id': pin.id})}}" method="POST" style="display: none;">
+				 		<input type="hidden" name="csrf_token" value="{{ csrf_token('pin_deletion_' ~ pin.id) }}">
+				 		<input type="hidden" name="_method" value="DELETE">
+				 	</form>
+				 </div>
+			</article>
 
-	<a href="#" onclick="event.preventDefault(); confirm('confirmez-vous la suppression du Pin?') && document.getElementById('js-pin-delete-form').submit();">Supprimer le Pin</a>
-
- 	<form id="js-pin-delete-form" action="{{path('app_pins_delete', {'id': pin.id})}}" method="POST" style="display: none;">
- 		<input type="hidden" name="csrf_token" value="{{ csrf_token('pin_deletion_' ~ pin.id) }}">
- 		<input type="hidden" name="_method" value="DELETE">
- 	</form>
+		 </div>
+	 </div>
 
 {% endblock %}
