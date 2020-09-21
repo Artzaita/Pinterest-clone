@@ -1,19 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-<h1>All Pins</h1>
 
-<a href="{{ path('app_pins_create')}}">Créer un Pin!</a>
+{% if pins|length > 0 %}
 
-{% for pin in pins%}
-	<article>
-		<h2><a href="{{path('app_pins_show', {'id': pin.id})}}">{{pin.getTitle()}}</a></h2>
-		<p>{{pin.description|u.truncate(5)}}</p>
-		<p>Crée le : {{pin.createdAt|ago}}</p>
-	</article>
+	<h1 class="text-center text-muted mb-4">All Pins</h1>
+
+{# <a href="{{ path('app_pins_create')}}">Créer un Pin!</a>
+ #}
+
+ 	{% for row in pins|batch(3) %}
+ 	<div class="row">
+	{% for pin in row%}
+		<div class="col-md-4">
+			<article class="pin bg-white rounded shadow">
+				<div class="mw-100 overflow-hidden">
+				<a href="{{path('app_pins_show', {'id': pin.id})}}">
+	  				<img src="{{ vich_uploader_asset(pin) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100 rounded-top" />
+				</a>
+				</div>
+	 			<h2 class="h5 text-muted pl-3 pt-3"><a href="{{path('app_pins_show', {'id': pin.id})}}" class="text-secondary text-decoration-none">{{pin.getTitle()}}</a></h2>
+				<p class="pl-3 pb-3 text-muted">Soumis par [auteur nom complet]</p>
+			</article>
+
+
+		</div>
+	{% endfor %}
+	</div>
+	{% endfor %}
 {% else %}
-	<p>Désolé, il n'y a pas encore de Pins!</p>	
-{% endfor %}
+	<p class="h1 text-center">Désolé, il n'y a pas encore de Pins!</p>
+	<p class="text-center"><a href="{{ path('app_pins_create')}}">Soyez le premier à en créer un!</a></p>
+{% endif %}
 {% endblock %}
 
 
