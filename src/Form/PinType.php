@@ -21,8 +21,8 @@ class PinType extends AbstractType
             'download_label' => 'télécharger',
             'download_uri' => true,
             'image_uri' => true,
-/*            'imagine_pattern' => '...',
-*/            'asset_helper' => true,
+            'imagine_pattern' => 'squared_thumbnail_small',
+            'asset_helper' => true,
             ])
             ->add('title')
             ->add('description')

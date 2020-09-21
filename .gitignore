@@ -19,3 +19,6 @@ yarn-error.log
 ###> custom ###
 /public/upload/
 ###< end custom ###
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
