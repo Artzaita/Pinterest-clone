@@ -36,14 +36,24 @@ body {
 
 }
 
-.vich-image .form-check {
-  @extend .mt-3
+.vich-image {
+
+  .form-check {
+  @extend .mt-3;
+  }
+
+  a {
+  @extend .d-block;
+  }
+
+  img {
+    @extend .mb-3;
+    @extend .rounded;
+    @extend .shadow;
+    @extend .img-thumbnail;
+  }
+
 }
 
-.vich-image a {
-  @extend .d-block
-}
 
-.vich-image a:nth-of-type(2) {
-  @extend .mt-3
-}
+
