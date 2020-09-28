@@ -224,7 +224,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "4.4",
-            "ref": "36d3075b2b8e0c4de0e82356a86e4c4a4eb6681b"
+            "ref": "af2e2efad553bc959a0c61d9185e33ca9eec5c99"
         },
         "files": [
             "./config/bootstrap.php",
