@@ -13,7 +13,7 @@
 				</a>
 				</div>
 	 			<h2 class="h5 text-muted pl-3 pt-3"><a href="{{path('app_pins_show', {'id': pin.id})}}" class="text-secondary text-decoration-none">{{pin.getTitle()}}</a></h2>
-				<p class="pl-3 pb-3 text-muted">Soumis {{pin.createdAt|ago}} par [auteur nom complet]</p>
+				<p class="pl-3 pb-3 text-muted">Soumis {{pin.createdAt|ago}} par {{pin.user.fullName}}</p>
 				<p class="pl-3 pb-3">{{pin.getDescription()}}</p>
 				<div class="pl-3 pb-3">
 					<a class="btn btn-light" href="{{path('app_pins_edit', {'id': pin.id})}}">Modifier le Pin</a>
