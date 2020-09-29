@@ -44,11 +44,11 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.2",
-            "ref": "c1431086fec31f17fbcfe6d6d7e92059458facc1"
+            "ref": "b609494a0ab33d79acf3ead2067e3f67c9a47bd2"
         },
         "files": [
             "./config/packages/doctrine_migrations.yaml",
-            "./src/Migrations/.gitignore"
+            "./migrations/.gitignore"
         ]
     },
     "doctrine/event-manager": {
@@ -327,11 +327,29 @@
             "./config/routes.yaml"
         ]
     },
+    "symfony/security-bundle": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "7b4408dc203049666fe23fabed23cbadc6d8440f"
+        },
+        "files": [
+            "./config/packages/security.yaml"
+        ]
+    },
     "symfony/security-core": {
         "version": "v5.0.9"
     },
     "symfony/security-csrf": {
         "version": "v5.0.9"
+    },
+    "symfony/security-guard": {
+        "version": "v5.0.11"
+    },
+    "symfony/security-http": {
+        "version": "v5.0.11"
     },
     "symfony/service-contracts": {
         "version": "v2.0.1"
