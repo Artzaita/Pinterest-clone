@@ -47,10 +47,7 @@ body {
   }
 
   img {
-    @extend .mb-3;
-    @extend .rounded;
-    @extend .shadow;
-    @extend .img-thumbnail;
+    @extend .mb-3, .rounded, .shadow, .img-thumbnail;
   }
 
 }

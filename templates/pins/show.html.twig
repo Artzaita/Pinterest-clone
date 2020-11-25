@@ -8,13 +8,11 @@
 		<div class="col-md-6 mx-auto">
 			<article class="pin bg-white rounded shadow">
 				<div class="mw-100 overflow-hidden rounded-top">
-				<a href="{{path('app_pins_show', {'id': pin.id})}}">
-	  				<img src="{{ vich_uploader_asset(pin) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100 rounded-top" />
-				</a>
+					<img src="{{ vich_uploader_asset(pin) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100 rounded-top" />
 				</div>
-	 			<h2 class="h5 text-muted pl-3 pt-3"><a href="{{path('app_pins_show', {'id': pin.id})}}" class="text-secondary text-decoration-none">{{pin.getTitle()}}</a></h2>
+	 			<h1 class="h5 text-secondary pl-3 pt-3">{{pin.getTitle()}}</h1>
 				<p class="pl-3 pb-3 text-muted">Soumis {{pin.createdAt|ago}} par {{pin.user.fullName}}</p>
-				<p class="pl-3 pb-3">{{pin.getDescription()}}</p>
+				<p class="pl-3 pb-3 text-break">{{pin.getDescription()}}</p>
 				<div class="pl-3 pb-3">
 					<a class="btn btn-light" href="{{path('app_pins_edit', {'id': pin.id})}}">Modifier le Pin</a>
 
