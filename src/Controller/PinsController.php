@@ -38,6 +38,10 @@ class PinsController extends AbstractController
     public function create(Request $request, EntityManagerInterface $em, UserRepository $userRepo)
     {
 
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+
     	$pin = new Pin;
 
 		$form = $this->createForm(PinType::class, $pin);
